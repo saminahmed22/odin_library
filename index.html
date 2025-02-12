@@ -1,26 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <script src="main.js"></script>
+    <script src="main.js" defer></script>
     <title>Odin Library</title>
 </head>
+
 <body>
     <header>
         <div class="branding">
             <img src="logos/main_logo.svg" alt="Logo" class="logo">
-            <h1 class="headerTitle">Odin Library</h1>            
+            <h1 class="headerTitle">Odin Library</h1>
         </div>
         <div class="headerActions">
-            <button class="addNew headerActionsButton">Add New Book</button>
-            <button class="manageExisting headerActionsButton">Manage Existing Books</button>
+            <button class="addNew headerActionsButton">Add a new book</button>
+            <dialog class="addBookModal">
+                <div class="addBookModalTopbar">
+                    <h3 class="addBookModalTitle">Add a new book</h3>
+                    <button class="cancelSubmission">X</button>
+                </div>
+
+                <form action="xyz.com" method="post" class="addNewBookModalForm" id="addNewBookModalForm">
+                    <label for="bookName">Name<span class="asterisk">*</span>:</label><br>
+                    <input required class="addBookModalInputs" type="text" name="bookName" id="bookName"
+                        placeholder="The Alchemist"><br><br>
+
+                    <label for="authorName">Author<span class="asterisk">*</span>:</label><br>
+                    <input required class="addBookModalInputs" type="text" name="authorName" id="authorName"
+                        placeholder="Paulo Coelho"><br><br>
+
+                    <label for="favquote">Favorite Quote:</label><br>
+                    <textarea class="addBookModalInputs" name="favquote" id="favquote" maxlength="120"
+                        placeholder="When we love, we always strive to become better than we are."></textarea><br>
+
+                    <input type="checkbox" name="finishCheck" id="finishCheck">
+                    <label for="finishCheck">Finished reading it?</label>
+
+                    <div class="addbookmodalActionbtns">
+                        <button class="submitNewBook">Submit</button>
+                    </div>
+                </form>
+            </dialog>
+            <!-- <button class="manageExisting headerActionsButton">Manage Existing Books</button> -->
         </div>
     </header>
     <div class="container"></div>
     <footer>
-        <a href="https://github.com/saminahmed22"><p class="credit">©Samin Ahmed</p></a>
+        <a href="https://github.com/saminahmed22">
+            <p class="credit">© Samin Ahmed</p>
+        </a>
     </footer>
 </body>
+
 </html>
