@@ -60,7 +60,7 @@ addBookform.addEventListener("submit", () => {
         if (book.finished) {
             bookCard.style.borderLeft = "10px solid rgb(0, 180, 0)";
             bookCardTitle.style.color = "rgb(0, 180, 0)";
-            bookCardAuthor.style.color = "rgb(0, 170, 0)";
+            bookCardAuthor.style.color = "rgb(0, 140, 0)";
         } else {
             bookCard.style.borderLeft = "10px solid yellow";
             bookCardTitle.style.color = "yellow";
