@@ -20,10 +20,11 @@
             <dialog class="addBookModal">
                 <div class="addBookModalTopbar">
                     <h3 class="addBookModalTitle">Add a new book</h3>
-                    <button class="cancelSubmission">X</button>
+                    <button class="cancelSubmission"><img src="logos/close_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
+                            alt="Close" class="close"></button>
                 </div>
 
-                <form action="xyz.com" method="post" class="addNewBookModalForm" id="addNewBookModalForm">
+                <form action="" method="post" class="addNewBookModalForm" id="addNewBookModalForm">
                     <label for="bookName">Name<span class="asterisk">*</span>:</label><br>
                     <input required class="addBookModalInputs" type="text" name="bookName" id="bookName"
                         placeholder="The Alchemist"><br><br>
@@ -40,14 +41,14 @@
                     <label for="finishCheck">Finished reading it?</label>
 
                     <div class="addbookmodalActionbtns">
-                        <button class="submitNewBook">Submit</button>
+                        <button class="submitNewBook" type="submit">Submit</button>
                     </div>
                 </form>
             </dialog>
             <!-- <button class="manageExisting headerActionsButton">Manage Existing Books</button> -->
         </div>
     </header>
-    <div class="container"></div>
+    <div class="container" id="container"></div>
     <footer>
         <a href="https://github.com/saminahmed22">
             <p class="credit">© Samin Ahmed</p>
