@@ -111,6 +111,7 @@ body{
 }
 #favquote{
     height: 60px;
+    resize: none;
 }
 
 #finishCheck{
