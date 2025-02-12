@@ -8,8 +8,30 @@ body, html{
     margin: 0;
 }
 
+body{
+    background-color: #f5deb3;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 :root{
     --header_footer_BGcolor: #112D4E;
+
+    /* book card color schemes */
+    /* color codes:
+        have read: green,
+            title, border-left: rgb(0, 180, 0),
+            author: rgb(0, 170, 0);
+
+        reading: yellow,
+            title, border-left: yellow
+            author: gold;
+
+        haven't read: red,
+            title, border-left: red,
+            author: crimson;
+    */
 }
 button{
     border: none;
@@ -17,9 +39,9 @@ button{
 }
 
 header{
+    height: 130px;
     background-color: var(--header_footer_BGcolor);
     /* position: sticky; */
-    height: 15vh;
     display: flex;
     justify-content: space-between;
 }
@@ -55,13 +77,10 @@ header{
     background-color: #f5deb3;
 }
 
-body{
-    background-color: #f5deb3;
-}
-
 .addBookModal{
     margin-left: auto;
     margin-right: auto;
+    margin-top: 150px;
     border: none;
     border-radius: 10px;
     color: white;
@@ -83,7 +102,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(255, 255, 255, 0.322);
+    background-color: rgba(255, 255, 255, 0);
 }
 .cancelSubmission:hover{
     background-color: rgb(255, 56, 56);
@@ -134,11 +153,47 @@ body{
 }
 
 .container{
-    height: 75vh;
+    margin: 50px;
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    justify-content: center;
+    gap: 20px;
 }
+
+.bookCard{
+    margin: 0;
+    height: 150px;
+    background-color: #09122C;
+    border-radius: 10px;
+    color: white;
+    font-family: monospace;
+}
+.bookCardTitle{
+    color: var(--bookCardTitleColor);
+    font-size: 20px;
+    padding: 20px 0 5px 10px;
+    margin-right: 10px;
+}
+.bookCardAuthor{
+    color: var(--bookCardAuthorColor);
+    padding-left: 80px;
+}
+.bookCardQoute {
+    padding-left: 25px;
+    width: max-content; /* Adjusts width to content, but will be constrained by max-width */
+    max-width: 45ch; /* 20 characters max per line */
+    word-wrap: break-word; /* Ensures long words wrap */
+    overflow-wrap: break-word;
+    white-space: normal; /* Allows wrapping */
+    font-style: italic;
+    padding-top: 30px;
+}
+
+
 footer{
     background-color: var(--header_footer_BGcolor);
-    height: 10vh;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
