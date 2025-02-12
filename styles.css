@@ -1,0 +1,77 @@
+@font-face {
+    font-family: norseBold;
+    src: url(fonts/Norse-Bold.otf);
+}
+
+body, html{
+    padding: 0;
+    margin: 0;
+}
+
+:root{
+    --header_footer_BGcolor: #112D4E;
+}
+
+header{
+    background-color: var(--header_footer_BGcolor);
+    /* position: sticky; */
+    height: 15vh;
+    display: flex;
+    justify-content: space-between;
+}
+.branding{
+    display: flex;
+    gap: 25px;
+}
+.logo{
+    height: 150px;
+    position: relative;
+    left: 15px;
+    bottom: 15px;
+}
+.headerTitle{
+    padding-top: 5px;
+    color: wheat;
+    font-family: norseBold;
+    font-size: 50px;
+}
+.headerActions{
+    display: flex;
+    gap: 25px;
+    margin: 45px 50px 0 0;
+}
+.headerActionsButton{
+    height: 35px;
+    width: 160px;
+    background-color: white; 
+    border: none;
+    border-radius: 20px;
+}
+.headerActionsButton:hover{
+    cursor: pointer;
+}
+.headerActionsButton:active{
+    background-color: #f5deb3;
+}
+
+body{
+    background-color: #f5deb3;
+}
+.container{
+    height: 75vh;
+}
+footer{
+    background-color: var(--header_footer_BGcolor);
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.credit{
+    color: wheat;
+    font-size: 15px;
+}
+
+a{
+    text-decoration: none;
+}
