@@ -11,6 +11,10 @@ body, html{
 :root{
     --header_footer_BGcolor: #112D4E;
 }
+button{
+    border: none;
+    cursor: pointer;
+}
 
 header{
     background-color: var(--header_footer_BGcolor);
@@ -47,9 +51,6 @@ header{
     border: none;
     border-radius: 20px;
 }
-.headerActionsButton:hover{
-    cursor: pointer;
-}
 .headerActionsButton:active{
     background-color: #f5deb3;
 }
@@ -57,6 +58,80 @@ header{
 body{
     background-color: #f5deb3;
 }
+
+.addBookModal{
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background-color: var(--header_footer_BGcolor);
+    height: 340px;
+    width: 275px;
+    font-family: sans-serif;
+}
+.addBookModalTopbar{
+    display: flex;
+    justify-content: space-between;
+}
+.addBookModalTitle{
+    margin: 2px 0 30px 0px;
+}
+.cancelSubmission{
+    height: 20px;
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.322);
+}
+.cancelSubmission:hover{
+    background-color: rgb(255, 56, 56);
+}
+.cancelSubmission:active{
+    background-color: crimson;
+}
+.addNewBookModalForm{
+    margin-left: 8px;
+}
+.addBookModalInputs{
+    width: 250px;
+    height: 20px;
+    border: none;
+    border-radius: 5px;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-top: 5px;
+}
+.asterisk{
+    color: red;
+}
+.addBookModalInputs:focus{
+    outline: none;
+}
+#favquote{
+    height: 60px;
+}
+
+#finishCheck{
+    margin-left: 0;
+    cursor: pointer;
+}
+
+.submitNewBook{
+    height: 30px;
+    width: 65px;
+    border: none;
+    border-radius: 5px;
+    position: absolute;
+    left: 215px;
+    bottom: 20px;
+}
+
+.submitNewBook:active{
+    background-color: rgb(0, 153, 0);
+}
+
 .container{
     height: 75vh;
 }
@@ -71,7 +146,6 @@ footer{
     color: wheat;
     font-size: 15px;
 }
-
 a{
     text-decoration: none;
 }
