@@ -41,7 +41,6 @@ button{
 header{
     height: 130px;
     background-color: var(--header_footer_BGcolor);
-    /* position: sticky; */
     display: flex;
     justify-content: space-between;
 }
