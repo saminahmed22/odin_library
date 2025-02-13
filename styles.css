@@ -151,7 +151,7 @@ header{
 .submitNewBook:active{
     background-color: rgb(0, 153, 0);
 }
-
+/* add masonry layout */
 .container{
     margin: 50px;
     flex: 1;
@@ -162,34 +162,126 @@ header{
 }
 
 .bookCard{
-    margin: 0;
-    height: 150px;
+    margin: 0 0 0 0;
+    height: max-content;
+    min-width: 400px;
+    max-width: 400px;
     background-color: #09122C;
     border-radius: 10px;
     color: white;
     font-family: monospace;
+    padding: 0 10px 10px 0;
 }
 .bookCardTitle{
     color: var(--bookCardTitleColor);
     font-size: 20px;
     padding: 20px 0 5px 10px;
     margin-right: 10px;
+    width: 75%;
+    max-width: 25ch;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 .bookCardAuthor{
     color: var(--bookCardAuthorColor);
     padding-left: 80px;
+    max-width: -25ch;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 .bookCardQoute {
     padding-left: 25px;
-    width: max-content; /* Adjusts width to content, but will be constrained by max-width */
-    max-width: 45ch; /* 20 characters max per line */
-    word-wrap: break-word; /* Ensures long words wrap */
+    width: max-content;
+    max-width: 45ch;
+    word-wrap: break-word;
     overflow-wrap: break-word;
-    white-space: normal; /* Allows wrapping */
+    white-space: normal;
     font-style: italic;
-    padding-top: 30px;
+    padding-top: 25px;
+}
+.bookCardHeader{
+    display: flex;
+    justify-content: space-between;
+}
+.cardAction{
+    height: 30px;
+    width: 70px;
+    display: none;
+    justify-self: flex-end;
+    gap: 10px;
+    margin: 5px 10px 0 0;
+    float: right;
 }
 
+.bookCard:hover .cardAction{
+    display: flex;
+}
+.cardActBtns{
+    flex: 1;
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+}
+.icon{
+    height: 20px;
+}
+.editBtn:hover{
+    background-color: rgb(36, 147, 184);
+}
+.editBtn:active{
+    background-color: rgb(11, 191, 252);
+}
+
+
+.deleteBtn:hover{
+    background-color: crimson;
+}
+.deleteBtn:active{
+    background-color: red;
+}
+.deleteConfirmDiv{
+    display: none;
+    height: 150px;
+    width: 300px;
+    color: white;
+    background-color: var(--header_footer_BGcolor);
+    position: absolute;
+    top: 40%;
+    left: 43%;
+    border-radius: 10px;
+}
+.deleteConfirmDiv h2{
+    font-family: sans-serif;
+    padding-left: 25px;
+}
+.deleteConfirmBtns{
+    width: 95%;
+    height: 45%;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-right: 150px;
+}
+.confirmDelete,
+.cancelDelete{
+    height: 30px;
+    width: 70px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.confirmDelete{
+    background-color: crimson;
+    color: white;
+}
+.confirmDelete:active{
+    background-color: red;
+}
 
 footer{
     background-color: var(--header_footer_BGcolor);
