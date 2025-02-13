@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="" href="icons/fav.ico">
     <script src="main.js" defer></script>
     <title>Odin Library</title>
 </head>
@@ -20,17 +21,17 @@
             <dialog class="addBookModal">
                 <div class="addBookModalTopbar">
                     <h3 class="addBookModalTitle">Add a new book</h3>
-                    <button class="cancelSubmission"><img src="logos/close.svg" alt="Close" class="close"></button>
+                    <button class="cancelSubmission"><img src="icons/close.svg" alt="Close" class="close"></button>
                 </div>
 
                 <form action="" method="post" class="addNewBookModalForm" id="addNewBookModalForm">
                     <label for="bookName">Name<span class="asterisk">*</span>:</label><br>
-                    <input required class="addBookModalInputs" type="text" name="bookName" id="bookName"
+                    <input required maxlength="65" class="addBookModalInputs" type="text" name="bookName" id="bookName"
                         placeholder="The Alchemist"><br><br>
 
                     <label for="authorName">Author<span class="asterisk">*</span>:</label><br>
-                    <input required class="addBookModalInputs" type="text" name="authorName" id="authorName"
-                        placeholder="Paulo Coelho"><br><br>
+                    <input required maxlength="35" class="addBookModalInputs" type="text" name="authorName"
+                        id="authorName" placeholder="Paulo Coelho"><br><br>
 
                     <label for="favquote">Favorite Quote:</label><br>
                     <textarea class="addBookModalInputs" name="favquote" id="favquote" maxlength="120"
@@ -48,6 +49,13 @@
         </div>
     </header>
     <div class="container" id="container"></div>
+    <div class="deleteConfirmDiv">
+        <h2>Are you sure?</h2>
+        <div class="deleteConfirmBtns">
+            <button class="confirmDelete" id="confirmDelete">Delete</button>
+            <button class="cancelDelete" id="cancelDelete">Cancel</button>
+        </div>
+    </div>
     <footer>
         <a href="https://github.com/saminahmed22">
             <p class="credit">© Samin Ahmed</p>
