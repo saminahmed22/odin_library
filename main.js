@@ -19,7 +19,7 @@ function Book(name, author, quote, finished){
     this.name = name;
     this.author = author;
     this.quote = quote;
-    this. finished = finished;
+    this.finished = finished;
 }
 
 addBookform.addEventListener("submit", () => {
@@ -35,6 +35,33 @@ addBookform.addEventListener("submit", () => {
 
     const bookCard = document.createElement("div");
     bookCard.classList.add("bookCard");
+    // #########################################################################
+    const cardAction = document.createElement("div")
+    cardAction.classList.add("cardAction")
+    
+    const editBtn = document.createElement("button");
+    editBtn.classList.add("editBtn", "cardActBtns");
+    const editBtnicon = document.createElement("img");
+    editBtnicon.classList.add("editBtnicon", "icon");
+    editBtnicon.src = "icons/edit.svg";
+    editBtnicon.alt = "Edit icon";
+    editBtn.appendChild(editBtnicon);
+    cardAction.appendChild(editBtn);
+    
+    const deleteBtn = document.createElement("button");
+    deleteBtn.classList.add("deleteBtn", "cardActBtns");
+    const deleteBtnicon = document.createElement("img");
+    deleteBtnicon.classList.add("deleteBtnicon", "icon");
+    deleteBtnicon.src = "icons/delete.svg";
+    deleteBtnicon.alt = "delete icon";
+    deleteBtn.appendChild(deleteBtnicon);
+    cardAction.appendChild(deleteBtn)
+    
+    bookCard.appendChild(cardAction)
+    
+    
+
+    // ##############################################################################################
 
     const container = document.getElementById("container");
     container.appendChild(bookCard);
@@ -55,21 +82,56 @@ addBookform.addEventListener("submit", () => {
         bookCardQoute.textContent= `"${book.quote}"`
     }
     bookCard.appendChild(bookCardQoute);
-
-    if(book.quote){
-        if (book.finished) {
-            bookCard.style.borderLeft = "10px solid rgb(0, 180, 0)";
-            bookCardTitle.style.color = "rgb(0, 180, 0)";
-            bookCardAuthor.style.color = "rgb(0, 140, 0)";
-        } else {
+    
+// LOGIC ISSUE WITH QOUTE< WHAT IF IT'S NOT GIVEN!
+    if (book.finished) {
+        bookCard.style.borderLeft = "10px solid rgb(0, 180, 0)";
+        bookCardTitle.style.color = "rgb(0, 180, 0)";
+        bookCardAuthor.style.color = "rgb(0, 140, 0)";
+    }
+    else{
+        if(book.quote){
             bookCard.style.borderLeft = "10px solid yellow";
             bookCardTitle.style.color = "yellow";
             bookCardAuthor.style.color = "gold";
+        } else {
+            bookCard.style.borderLeft = "10px solid red";
+            bookCardTitle.style.color = "red";
+            bookCardAuthor.style.color = "crimson";
         }
-    } else {
-        bookCard.style.borderLeft = "10px solid red";
-        bookCardTitle.style.color = "red";
-        bookCardAuthor.style.color = "crimson";
     }
+    console.log(book)
     document.getElementById("addNewBookModalForm").reset();
 })
+
+// move it inside the fucntion, as it it needs to be created 
+// const editBtns = document.querySelectorAll(".editBtn");
+// const deleteBtns = document.querySelectorAll(".deleteBtn");
+
+// const cardButtons = document.querySelectorAll(".cardActBtns");
+// cardButtons.forEach(btn => {
+//     btn.addEventListener("click", () => {
+//         console.log("Card Button Pressed")
+//     })
+// })
+
+document.getElementById("container").addEventListener("click", (event) => {
+    if (event.target.closest(".editBtn")) {
+        console.log("Edit button pressed");
+    }
+
+    if (event.target.closest(".deleteBtn")) {
+        console.log("Delete button pressed");
+        const confirmation = document.querySelector(".deleteConfirmDiv");
+        confirmation.style.display = "block";
+
+        document.getElementById("confirmDelete").addEventListener("click", () => {
+            event.target.closest(".bookCard").remove();
+            confirmation.style.display = "none";
+        })
+
+        document.getElementById("cancelDelete").addEventListener("click", () => {
+            confirmation.style.display = "none";
+        })
+    }
+});
