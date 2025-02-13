@@ -104,34 +104,30 @@ addBookform.addEventListener("submit", () => {
     document.getElementById("addNewBookModalForm").reset();
 })
 
-// move it inside the fucntion, as it it needs to be created 
-// const editBtns = document.querySelectorAll(".editBtn");
-// const deleteBtns = document.querySelectorAll(".deleteBtn");
 
-// const cardButtons = document.querySelectorAll(".cardActBtns");
-// cardButtons.forEach(btn => {
-//     btn.addEventListener("click", () => {
-//         console.log("Card Button Pressed")
-//     })
-// })
-
+const confirmation = document.querySelector(".deleteConfirmDiv");
+let bookTodelete = null;
 document.getElementById("container").addEventListener("click", (event) => {
     if (event.target.closest(".editBtn")) {
         console.log("Edit button pressed");
+        
     }
 
     if (event.target.closest(".deleteBtn")) {
+        bookTodelete = event.target.closest(".bookCard");
         console.log("Delete button pressed");
-        const confirmation = document.querySelector(".deleteConfirmDiv");
+        
         confirmation.style.display = "block";
-
-        document.getElementById("confirmDelete").addEventListener("click", () => {
-            event.target.closest(".bookCard").remove();
-            confirmation.style.display = "none";
-        })
-
-        document.getElementById("cancelDelete").addEventListener("click", () => {
-            confirmation.style.display = "none";
-        })
     }
 });
+
+
+document.getElementById("confirmDelete").addEventListener("click", () => {
+    bookTodelete.remove();
+    confirmation.style.display = "none";
+})
+
+document.getElementById("cancelDelete").addEventListener("click", () => {
+    bookTodelete = null;
+    confirmation.style.display = "none";
+})
