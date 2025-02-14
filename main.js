@@ -29,6 +29,35 @@ function Book(bookID, name, author, quote, finished){
     this.finished = finished;
 }
 
+function changeColorCode(getBookID){
+
+    const getBookObj = bookCollection[getBookID]
+
+    let borderColor;
+    let titleColor;
+    let authorColor;
+
+    if (getBookObj.finished) {
+        borderColor = "10px solid rgb(0, 180, 0)";
+        titleColor = "rgb(0, 180, 0)";
+        authorColor = "rgb(0, 140, 0)";
+    }
+    else{
+        if(getBookObj.quote){
+            borderColor = "10px solid yellow";
+            titleColor = "yellow";
+            authorColor = "gold";
+        } else {
+            borderColor = "10px solid red";
+            titleColor = "red";
+            authorColor = "crimson";
+        }
+    }
+    document.querySelector(`.${getBookID}`).style.borderLeft = borderColor;
+    document.querySelector(`.${getBookID}_Title`).style.color = titleColor;
+    document.querySelector(`.${getBookID}_Author`).style.color = authorColor;
+}
+
 addBookform.addEventListener("submit", () => {
     event.preventDefault();
     addbookModal.close();
@@ -89,23 +118,9 @@ addBookform.addEventListener("submit", () => {
     }
     bookCard.appendChild(bookCardQoute);
     
-// LOGIC ISSUE WITH QOUTE< WHAT IF IT'S NOT GIVEN!
-    if (book.finished) {
-        bookCard.style.borderLeft = "10px solid rgb(0, 180, 0)";
-        bookCardTitle.style.color = "rgb(0, 180, 0)";
-        bookCardAuthor.style.color = "rgb(0, 140, 0)";
-    }
-    else{
-        if(book.quote){
-            bookCard.style.borderLeft = "10px solid yellow";
-            bookCardTitle.style.color = "yellow";
-            bookCardAuthor.style.color = "gold";
-        } else {
-            bookCard.style.borderLeft = "10px solid red";
-            bookCardTitle.style.color = "red";
-            bookCardAuthor.style.color = "crimson";
-        }
-    }
+    changeColorCode(bookID);
+
+
     console.log(book)
     addBookform.reset();
 })
@@ -185,34 +200,17 @@ editBookform.addEventListener("submit", () => {
     updateBookCardName.textContent = getBookObj.name;
 
     const updateBookCardAuthor = document.querySelector(`.${getBookID}_Author`);
-    updateBookCardAuthor.textContent = getBookObj.author;
+    updateBookCardAuthor.textContent = `—${getBookObj.author}`;
 
     const updateBookCardQoute = document.querySelector(`.${getBookID}_Qoute`);
     updateBookCardQoute.textContent = getBookObj.quote;
 
-    if (getBookObj.finished) {
-        document.querySelector(`.${getBookID}`).style.borderLeft = "10px solid rgb(0, 180, 0)";
-        document.querySelector(`.${getBookID}_Title`).style.color = "rgb(0, 180, 0)";
-        document.querySelector(`.${getBookID}_Author`).style.color = "rgb(0, 140, 0)";
-    }
-    else{
-        if(getBookObj.quote){
-            document.querySelector(`.${getBookID}`).style.borderLeft = "10px solid yellow";
-            document.querySelector(`.${getBookID}_Title`).style.color = "yellow";
-            document.querySelector(`.${getBookID}_Author`).style.color = "gold";
-        } else {
-            document.querySelector(`.${getBookID}`).style.borderLeft = "10px solid red";
-            document.querySelector(`.${getBookID}_Title`).style.color = "red";
-            document.querySelector(`.${getBookID}_Author`).style.color = "crimson";
-        }
-    }
+    changeColorCode(getBookID);
 
 
     editbookModal.close();
     editBookform.reset();
 })
-
-
 
 
 document.getElementById("confirmDelete").addEventListener("click", () => {
