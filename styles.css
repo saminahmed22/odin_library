@@ -152,7 +152,8 @@ header{
     background-color: rgb(0, 153, 0);
 }
 .container{
-    margin: 30px 110px 30px 110px;
+    margin: 30px 5vw 30px 5vw;
+    /* margin: 30px 110px 30px 110px; */
     flex: 1;
     columns: 420px 4;
     column-gap: 3px;
