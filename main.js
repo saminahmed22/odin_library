@@ -6,7 +6,7 @@ const addbookModal = document.querySelector(".addBookModal");
 
 
 function generateUniqueID() {
-    return `book_${Math.floor(Math.random() * 1000000)}`; // Example: book_723456
+    return `book_${Math.floor(Math.random() * 1000000)}`;
 }
 const bookCollection = {};
 const addBookform = document.getElementById("addNewBookModalForm");
