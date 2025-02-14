@@ -47,14 +47,43 @@
             </dialog>
         </div>
     </header>
+    <div class="editDialog">
+        <dialog class="editBookModal">
+            <div class="editBookModalTopbar">
+                <h3 class="editBookModalTitle">Edit book</h3>
+                <button class="cancelEditSubmission"><img src="icons/close.svg" alt="Close" class="close"></button>
+            </div>
+
+            <form action="" method="post" class="editBookModalForm" id="editBookModalForm">
+                <label for="bookName">Name<span class="asterisk">*</span>:</label><br>
+                <input required maxlength="65" class="editBookModalInputs" type="text" name="bookName"
+                    id="bookNameEdit"><br><br>
+
+                <label for="authorName">Author<span class="asterisk">*</span>:</label><br>
+                <input required maxlength="35" class="editBookModalInputs" type="text" name="authorName"
+                    id="authorNameEdit"><br><br>
+
+                <label for="favquote">Favorite Quote:</label><br>
+                <textarea class="editBookModalInputs" name="favquote" id="favquoteEdit" maxlength="120"></textarea><br>
+
+                <input type="checkbox" name="finishCheck" id="finishCheckEdit">
+                <label for="finishCheck">Finished reading it?</label>
+
+                <div class="editbookmodalActionbtns">
+                    <button class="submitEditedBook" type="submit">Submit</button>
+                </div>
+            </form>
+        </dialog>
+    </div>
     <div class="container" id="container"></div>
-    <div class="deleteConfirmDiv">
+
+    <dialog class="deleteConfirmDiv">
         <h2>Are you sure?</h2>
         <div class="deleteConfirmBtns">
             <button class="confirmDelete" id="confirmDelete">Delete</button>
             <button class="cancelDelete" id="cancelDelete">Cancel</button>
         </div>
-    </div>
+    </dialog>
     <footer>
         <a href="https://github.com/saminahmed22">
             <p class="credit">© Samin Ahmed</p>
