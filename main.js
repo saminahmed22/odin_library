@@ -3,11 +3,6 @@ const cancelSubmission = document.querySelector(".cancelSubmission");
 const addbookModal = document.querySelector(".addBookModal");
 
 
-
-
-function generateUniqueID() {
-    return `book_${Math.floor(Math.random() * 1000000)}`;
-}
 const bookCollection = {};
 const addBookform = document.getElementById("addNewBookModalForm");
 
@@ -20,15 +15,6 @@ cancelSubmission.addEventListener("click", () => {
     addBookform.reset();
 })
 
-
-function Book(bookID, name, author, quote, finished){
-    this.bookID = bookID;
-    this.name = name;
-    this.author = author;
-    this.quote = quote;
-    this.finished = finished;
-}
-
 function changeColorCode(getBookID){
 
     const getBookObj = bookCollection[getBookID]
@@ -37,7 +23,7 @@ function changeColorCode(getBookID){
     let titleColor;
     let authorColor;
 
-    if (getBookObj.finished) {
+    if (getBookObj.finishStatus) {
         borderColor = "10px solid rgb(0, 180, 0)";
         titleColor = "rgb(0, 180, 0)";
         authorColor = "rgb(0, 140, 0)";
@@ -58,87 +44,170 @@ function changeColorCode(getBookID){
     document.querySelector(`.${getBookID}_Author`).style.color = authorColor;
 }
 
-addBookform.addEventListener("submit", () => {
-    event.preventDefault();
-    addbookModal.close();
-    
-    const name = document.getElementById("bookName").value;
-    const author = document.getElementById("authorName").value;
-    const quote = document.getElementById("favquote").value;
-    const finished = document.getElementById("finishCheck").checked;
-    const bookID = generateUniqueID();
+// Creates Book and adds it to the collection Object
+function createBook(bookID, name, author, quote, finishStatus){
 
-    const book = new Book(bookID, name, author, quote, finished);
+    function Book(bookID, name, author, quote, finishStatus){
+        this.bookID = bookID;
+        this.name = name;
+        this.author = author;
+        this.quote = quote;
+        this.finishStatus = finishStatus;
+    }
+
+    const book = new Book(bookID, name, author, quote, finishStatus);
     bookCollection[bookID] = book;
+
+    console.log(`bookID in create Book" Func = ${bookID}`)
+    console.log("Book Object in create Book Func = " + JSON.stringify(book, null, 2));
+}
+
+// Creates Book Card
+function createBookCard(bookID){
+
+    const getBookObj = bookCollection[bookID]
+    console.log(`BookID in create Book card Func = ${bookID}`)
+    console.log("Book Object in create Book card Func = " + JSON.stringify(getBookObj, null, 2))
 
     const bookCard = document.createElement("div");
     bookCard.classList.add("bookCard", bookID);
 
+
     const cardAction = document.createElement("div")
     cardAction.classList.add("cardAction")
     
+    // Add Edit button
     const editBtn = document.createElement("button");
     editBtn.classList.add("editBtn", "cardActBtns");
+
     const editBtnicon = document.createElement("img");
     editBtnicon.classList.add("editBtnicon", "icon");
     editBtnicon.src = "icons/edit.svg";
     editBtnicon.alt = "Edit icon";
+
     editBtn.appendChild(editBtnicon);
+
     cardAction.appendChild(editBtn);
     
+    // Add Delete Button
     const deleteBtn = document.createElement("button");
     deleteBtn.classList.add("deleteBtn", "cardActBtns");
+
     const deleteBtnicon = document.createElement("img");
     deleteBtnicon.classList.add("deleteBtnicon", "icon");
     deleteBtnicon.src = "icons/delete.svg";
     deleteBtnicon.alt = "delete icon";
+
     deleteBtn.appendChild(deleteBtnicon);
+
     cardAction.appendChild(deleteBtn)
     
+    // Add Action buttons to book card
     bookCard.appendChild(cardAction)
     
-
-    const container = document.getElementById("container");
-    container.appendChild(bookCard);
-
+    // Book card title Div
     const bookCardTitle = document.createElement("div") 
     bookCardTitle.classList.add("bookCardTitle", `${bookID}_Title`)
-    bookCardTitle.textContent = book.name
+    bookCardTitle.textContent = getBookObj.name
     bookCard.appendChild(bookCardTitle)
 
+    // Book card Author Div
     const bookCardAuthor = document.createElement("div"); 
     bookCardAuthor.classList.add("bookCardAuthor", `${bookID}_Author`)
-    bookCardAuthor.textContent = `—${book.author}`
+    bookCardAuthor.textContent = `—${getBookObj.author}`
     bookCard.appendChild(bookCardAuthor);
 
-    const bookCardQoute = document.createElement("div");
-    bookCardQoute.classList.add("bookCardQoute", `${bookID}_Qoute`)
-    if(book.quote){
-        bookCardQoute.textContent= `"${book.quote}"`
+
+    // Add book card quote div, only if quote was given
+    if(getBookObj.quote){
+        const bookCardQoute = document.createElement("div");
+        bookCardQoute.classList.add("bookCardQoute", `${bookID}_Qoute`)
+        bookCardQoute.textContent= `"${getBookObj.quote}"`
+        bookCard.appendChild(bookCardQoute);
     }
-    bookCard.appendChild(bookCardQoute);
     
+
+    // Add bookcard to the container
+    const container = document.getElementById("container");
+    container.appendChild(bookCard); 
+
+    // Add color code based on read status
     changeColorCode(bookID);
+}
+
+// ************************************************************************************************************************************
+
+createBook("Demo_1", "The Alchemist", "Paulo Coelho", "It's the possibility of having a dream come true that makes life interesting.", true);
+createBookCard("Demo_1")
+
+createBook("Demo_2", "To Kill a Mockingbird", "Harper Lee", 'Atticus said to Jem one day, "I’d rather you shot at tin cans in the backyard, but I know you’ll go after birds. Shoot all the blue jays you want, if you can hit ‘em, but remember it’s a sin to kill a mockingbird." That was the only time I ever heard Atticus say it was a sin to do something, and I asked Miss Maudie about it. "Your father’s right," she said. "Mockingbirds don’t do one thing except make music for us to enjoy. They don’t eat up people’s gardens, don’t nest in corn cribs, they don’t do one thing but sing their hearts out for us. That’s why it’s a sin to kill a mockingbird.', false);
+createBookCard("Demo_2")
+
+createBook("Demo_3", "1984", "George Orwell", "War is peace. Freedom is slavery. Ignorance is strength.", false);
+createBookCard("Demo_3");
+
+createBook("Demo_4", "Pride and Prejudice", "Jane Austen", "Vanity and pride are different things, though the words are often used synonymously.", true);
+createBookCard("Demo_4");
+
+createBook("Demo_5", "The Great Gatsby", "F. Scott Fitzgerald", "", false);
+createBookCard("Demo_5");
+
+createBook("Demo_6", "Moby-Dick", "Herman Melville", "Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; whenever I find myself involuntarily pausing before coffin warehouses, and bringing up the rear of every funeral I meet; and especially whenever my hypos get such an upper hand of me, that it requires a strong moral principle to prevent me from deliberately stepping into the street, and methodically knocking people's hats off - then, I account it high time to get to sea as soon as I can" , false);
+createBookCard("Demo_6");
+
+createBook("Demo_7", "Brave New World", "Aldous Huxley", "But I don't want comfort. I want God, I want poetry, I want real danger, I want freedom, I want goodness. I want sin.", true);
+createBookCard("Demo_7");
+
+createBook("Demo_8", "The Catcher in the Rye", "J.D. Salinger", "I am always saying 'Glad to've met you' to somebody I'm not at all glad I met.", false);
+createBookCard("Demo_8");
+
+createBook("Demo_9", "Crime and Punishment", "Fyodor Dostoevsky", "Pain and suffering are always inevitable for a large intelligence and a deep heart.", true);
+createBookCard("Demo_9");
+
+createBook("Demo_10", "Wuthering Heights", "Emily Brontë", "", false);
+createBookCard("Demo_10");
 
 
-    console.log(book)
+
+// ************************************************************************************************************************************
+
+
+
+// Add new book form submission
+addBookform.addEventListener("submit", () => {
+    event.preventDefault();
+    addbookModal.close();
+
+    const CreateUniqueID = `book_${Math.floor(Math.random() * 1000000)}`;
+    const name = document.getElementById("bookName").value;
+    const author = document.getElementById("authorName").value;
+    const quote = document.getElementById("favquote").value;
+    const finishStatus = document.getElementById("finishCheck").checked;
+
+    createBook(CreateUniqueID, name, author, quote, finishStatus);
+    createBookCard(CreateUniqueID);
+
+    console.log()
     addBookform.reset();
 })
 
 
 const confirmation = document.querySelector(".deleteConfirmDiv");
-let bookTodelete = null;
-let bookToedit = null;
+let bookTodelete;
+let bookToedit;
 let getBookID;
+let getBookObj;
 
 let editName;
 let editAuthor;
 let editQuote;
 let editFinish;
+
 const editbookModal = document.querySelector(".editBookModal");
 const editBookform = document.getElementById("editBookModalForm");
 
 document.getElementById("container").addEventListener("click", (e) => {
+    // Edit Book and bookCard
     if (e.target.closest(".editBtn")) {
 
         bookToedit = e.target.closest(".bookCard");
@@ -147,6 +216,7 @@ document.getElementById("container").addEventListener("click", (e) => {
         getBookObj = bookCollection[getBookID];
         console.log(getBookObj);
 
+        // Load book information to book edit form
         editName = document.getElementById("bookNameEdit");
         editName.value = getBookObj.name;
 
@@ -157,14 +227,14 @@ document.getElementById("container").addEventListener("click", (e) => {
         editQuote.value = getBookObj.quote;
 
         editFinish = document.getElementById("finishCheckEdit");
-        editFinish.checked = getBookObj.finished;
+        editFinish.checked = getBookObj.finishStatus;
 
         editbookModal.showModal();
 
 
 
 
-
+        // Cancel Edit
         const cancelEditSubmission = document.querySelector(".cancelEditSubmission");
         cancelEditSubmission.addEventListener("click", () => {
             editbookModal.close();
@@ -172,7 +242,7 @@ document.getElementById("container").addEventListener("click", (e) => {
         })
     }
 
-
+    // Delete Book and bookCard
     if (event.target.closest(".deleteBtn")) {
         bookTodelete = event.target.closest(".bookCard");
         console.log("Delete button pressed");
@@ -182,20 +252,22 @@ document.getElementById("container").addEventListener("click", (e) => {
     }
 });
 
-
+// Book Edit form Submission
 editBookform.addEventListener("submit", () => {
     event.preventDefault();
     console.log(bookCollection[getBookID]);
 
+
+    // Update Book information
     getBookObj.name = editName.value;
     getBookObj.author = editAuthor.value;
     getBookObj.quote = editQuote.value;
-    getBookObj.finished = editFinish.checked;
-    console.log(getBookObj);
+    getBookObj.finishStatus = editFinish.checked;
 
     console.log(getBookID)
     console.log(`#${getBookID}`)
 
+    // Update the book card
     const updateBookCardName = document.querySelector(`.${getBookID}_Title`);
     updateBookCardName.textContent = getBookObj.name;
 
@@ -205,6 +277,7 @@ editBookform.addEventListener("submit", () => {
     const updateBookCardQoute = document.querySelector(`.${getBookID}_Qoute`);
     updateBookCardQoute.textContent = getBookObj.quote;
 
+    // Update the colorCode
     changeColorCode(getBookID);
 
 
@@ -213,11 +286,13 @@ editBookform.addEventListener("submit", () => {
 })
 
 
+// Delete book
 document.getElementById("confirmDelete").addEventListener("click", () => {
     bookTodelete.remove();
     confirmation.close();
 })
 
+// Cancel Book Deletion
 document.getElementById("cancelDelete").addEventListener("click", () => {
     bookTodelete = null;
     confirmation.close();
