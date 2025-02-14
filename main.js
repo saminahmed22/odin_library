@@ -118,13 +118,13 @@ function createBookCard(bookID){
     bookCard.appendChild(bookCardAuthor);
 
 
-    // Add book card quote div, only if quote was given
+    // Add book card quote div
+    const bookCardQoute = document.createElement("div");
+    bookCardQoute.classList.add("bookCardQoute", `${bookID}_Qoute`)
     if(getBookObj.quote){
-        const bookCardQoute = document.createElement("div");
-        bookCardQoute.classList.add("bookCardQoute", `${bookID}_Qoute`)
         bookCardQoute.textContent= `"${getBookObj.quote}"`
-        bookCard.appendChild(bookCardQoute);
     }
+    bookCard.appendChild(bookCardQoute);
     
 
     // Add bookcard to the container
@@ -214,7 +214,6 @@ document.getElementById("container").addEventListener("click", (e) => {
         console.log("Edit button pressed");
         getBookID = bookToedit.classList[1];
         getBookObj = bookCollection[getBookID];
-        console.log(getBookObj);
 
         // Load book information to book edit form
         editName = document.getElementById("bookNameEdit");
@@ -273,9 +272,9 @@ editBookform.addEventListener("submit", () => {
 
     const updateBookCardAuthor = document.querySelector(`.${getBookID}_Author`);
     updateBookCardAuthor.textContent = `—${getBookObj.author}`;
-
+    
     const updateBookCardQoute = document.querySelector(`.${getBookID}_Qoute`);
-    updateBookCardQoute.textContent = getBookObj.quote;
+    updateBookCardQoute.textContent = `\"${getBookObj.quote}\"`;
 
     // Update the colorCode
     changeColorCode(getBookID);
