@@ -244,29 +244,32 @@ header{
     background-color: red;
 }
 .deleteConfirmDiv{
-    display: none;
-    height: 150px;
-    width: 300px;
+    height: 100px;
+    width: 250px;
     color: white;
     background-color: var(--header_footer_BGcolor);
-    position: absolute;
-    top: 40%;
-    left: 43%;
+    border: none;
     border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 250px;
+    overflow: hidden;
 }
 .deleteConfirmDiv h2{
     font-family: sans-serif;
-    padding-left: 25px;
+    padding: 0 25px 0 0;
+    margin-top: 0;
 }
 .deleteConfirmBtns{
-    width: 95%;
-    height: 45%;
+    width: 102%;
+    height: 58%;
     display: flex;
     gap: 10px;
     justify-content: flex-end;
     align-items: flex-end;
     margin-right: 150px;
 }
+
 .confirmDelete,
 .cancelDelete{
     height: 30px;
@@ -281,7 +284,79 @@ header{
 .confirmDelete:active{
     background-color: red;
 }
+/* ############################################### */
+.editBookModal{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 150px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background-color: var(--header_footer_BGcolor);
+    height: 340px;
+    width: 275px;
+    font-family: sans-serif;
+}
+.editBookModalTopbar{
+    display: flex;
+    justify-content: space-between;
+}
+.editBookModalTitle{
+    margin: 2px 0 30px 0px;
+}
+.cancelEditSubmission{
+    height: 20px;
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0);
+}
+.cancelEditSubmission:hover{
+    background-color: rgb(255, 56, 56);
+}
+.cancelEditSubmission:active{
+    background-color: crimson;
+}
+.editBookModalForm{
+    margin-left: 8px;
+}
+.editBookModalInputs{
+    width: 250px;
+    height: 20px;
+    border: none;
+    border-radius: 5px;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-top: 5px;
+}
+.editBookModalInputs:focus{
+    outline: none;
+}
+#favquoteEdit{
+    height: 60px;
+    resize: none;
+}
 
+#finishCheckEdit{
+    margin-left: 0;
+    cursor: pointer;
+}
+
+.submitEditedBook{
+    height: 30px;
+    width: 65px;
+    border: none;
+    border-radius: 5px;
+    position: absolute;
+    left: 215px;
+    bottom: 20px;
+}
+
+.submitEditedBook:active{
+    background-color: rgb(0, 153, 0);
+}
+/* ############################################### */
 footer{
     background-color: var(--header_footer_BGcolor);
     height: 100px;
