@@ -152,16 +152,18 @@ header{
 }
 /* add masonry layout */
 .container{
-    margin: 50px;
+    margin: 30px 110px 30px 110px;
     flex: 1;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    justify-content: center;
-    gap: 20px;
+
+    columns: 420px 4;
+    column-gap: 3px;
+    /* display: grid; */
+    /* grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); */
 }
 
 .bookCard{
-    margin: 0 0 0 0;
+    break-inside: avoid;
+    margin: 0 0 5px 0;
     height: max-content;
     min-width: 400px;
     max-width: 400px;
