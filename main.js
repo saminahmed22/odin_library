@@ -90,6 +90,7 @@ function createBookCard(bookID){
     editBtnicon.classList.add("editBtnicon", "icon");
     editBtnicon.src = "icons/edit.svg";
     editBtnicon.alt = "Edit icon";
+    editBtnicon.draggable = false;
 
     editBtn.appendChild(editBtnicon);
 
@@ -103,6 +104,7 @@ function createBookCard(bookID){
     deleteBtnicon.classList.add("deleteBtnicon", "icon");
     deleteBtnicon.src = "icons/delete.svg";
     deleteBtnicon.alt = "delete icon";
+    deleteBtnicon.draggable = false;
 
     deleteBtn.appendChild(deleteBtnicon);
 
@@ -217,11 +219,11 @@ const editbookModal = document.querySelector(".editBookModal");
 const editBookform = document.getElementById("editBookModalForm");
 
 document.getElementById("container").addEventListener("click", (e) => {
-    overlay.style.display = "block"
+    
 
     // Edit Book and bookCard
     if (e.target.closest(".editBtn")) {
-
+        overlay.style.display = "block"
         bookToedit = e.target.closest(".bookCard");
         console.log("Edit button pressed");
         getBookID = bookToedit.classList[1];
@@ -256,11 +258,10 @@ document.getElementById("container").addEventListener("click", (e) => {
 
     // Delete Book and bookCard
     if (event.target.closest(".deleteBtn")) {
+        overlay.style.display = "block"
         bookTodelete = event.target.closest(".bookCard");
         console.log("Delete button pressed");
-        
         confirmation.showModal();
-
     }
 });
 
