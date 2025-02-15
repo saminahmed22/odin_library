@@ -275,9 +275,14 @@ editBookform.addEventListener("submit", () => {
 
     const updateBookCardAuthor = document.querySelector(`.${getBookID}_Author`);
     updateBookCardAuthor.textContent = `—${getBookObj.author}`;
-    
+
     const updateBookCardQoute = document.querySelector(`.${getBookID}_Qoute`);
+    if(getBookObj.quote){
     updateBookCardQoute.textContent = `\"${getBookObj.quote}\"`;
+    }
+    else{
+        updateBookCardQoute.textContent = getBookObj.quote;
+    }
 
     // Update the colorCode
     changeColorCode(getBookID);
