@@ -39,6 +39,10 @@ button{
     cursor: pointer;
 }
 
+input[type="checkbox"] {
+    accent-color: dodgerblue;
+}
+
 header{
     height: 130px;
     background-color: var(--header_footer_BGcolor);
@@ -81,13 +85,14 @@ header{
     margin-left: auto;
     margin-right: auto;
     margin-top: 150px;
-    border: none;
+    border: 2px solid rgba(0, 0, 0, 0.568);
     border-radius: 10px;
     color: white;
     background-color: var(--header_footer_BGcolor);
     height: 340px;
     width: 275px;
     font-family: sans-serif;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 .addBookModalTopbar{
     display: flex;
@@ -289,13 +294,14 @@ header{
     margin-left: auto;
     margin-right: auto;
     margin-top: 150px;
-    border: none;
+    border: 2px solid rgba(0, 0, 0, 0.568);
     border-radius: 10px;
     color: white;
     background-color: var(--header_footer_BGcolor);
     height: 340px;
     width: 275px;
     font-family: sans-serif;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 .editBookModalTopbar{
     display: flex;
