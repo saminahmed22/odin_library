@@ -85,14 +85,13 @@ header{
     margin-left: auto;
     margin-right: auto;
     margin-top: 150px;
-    border: 2px solid rgba(0, 0, 0, 0.568);
+    border: none;
     border-radius: 10px;
     color: white;
     background-color: var(--header_footer_BGcolor);
     height: 340px;
     width: 275px;
     font-family: sans-serif;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     z-index: 3;
 }
 .addBookModalTopbar{
@@ -249,19 +248,32 @@ header{
 .deleteBtn:active{
     background-color: red;
 }
+
+.deleteConfirmDiv{
+    position: relative;
+
+}
+.overlay{
+    position: absolute;
+    z-index: 1;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.575);
+    display: none;
+}
 .deleteConfirmDiv{
     height: 100px;
     width: 250px;
     color: white;
     background-color: var(--header_footer_BGcolor);
-    border: 2px solid rgba(0, 0, 0, 0.568);
+    border: none;
     border-radius: 10px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 250px;
     overflow: hidden;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    z-index: 3;
+    position: absolute;
+    z-index: 1;
 }
 .deleteConfirmDiv h2{
     font-family: sans-serif;
@@ -297,14 +309,13 @@ header{
     margin-left: auto;
     margin-right: auto;
     margin-top: 150px;
-    border: 2px solid rgba(0, 0, 0, 0.568);
+    border: none;
     border-radius: 10px;
     color: white;
     background-color: var(--header_footer_BGcolor);
     height: 340px;
     width: 275px;
     font-family: sans-serif;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     z-index: 3;
 }
 .editBookModalTopbar{

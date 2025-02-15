@@ -6,12 +6,18 @@ const addbookModal = document.querySelector(".addBookModal");
 const bookCollection = {};
 const addBookform = document.getElementById("addNewBookModalForm");
 
+const overlay = document.querySelector(".overlay")
+
 addNewbookButton.addEventListener("click", () => {
+    
     addbookModal.showModal();
+    overlay.style.display = "block"
 })
  
 cancelSubmission.addEventListener("click", () => {
+    
     addbookModal.close();
+    overlay.style.display = "none"
     addBookform.reset();
 })
 
@@ -180,6 +186,7 @@ createBookCard("Demo_11");
 addBookform.addEventListener("submit", () => {
     event.preventDefault();
     addbookModal.close();
+    overlay.style.display = "none";
 
     const CreateUniqueID = `book_${Math.floor(Math.random() * 1000000)}`;
     const name = document.getElementById("bookName").value;
@@ -210,6 +217,8 @@ const editbookModal = document.querySelector(".editBookModal");
 const editBookform = document.getElementById("editBookModalForm");
 
 document.getElementById("container").addEventListener("click", (e) => {
+    overlay.style.display = "block"
+
     // Edit Book and bookCard
     if (e.target.closest(".editBtn")) {
 
@@ -241,6 +250,7 @@ document.getElementById("container").addEventListener("click", (e) => {
         cancelEditSubmission.addEventListener("click", () => {
             editbookModal.close();
             editBookform.reset();
+            overlay.style.display = "none"
         })
     }
 
@@ -290,6 +300,7 @@ editBookform.addEventListener("submit", () => {
 
     editbookModal.close();
     editBookform.reset();
+    overlay.style.display = "none"
 })
 
 
@@ -297,10 +308,12 @@ editBookform.addEventListener("submit", () => {
 document.getElementById("confirmDelete").addEventListener("click", () => {
     bookTodelete.remove();
     confirmation.close();
+    overlay.style.display = "none"
 })
 
 // Cancel Book Deletion
 document.getElementById("cancelDelete").addEventListener("click", () => {
     bookTodelete = null;
     confirmation.close();
+    overlay.style.display = "none"
 })
