@@ -146,26 +146,29 @@ createBookCard("Demo_2")
 createBook("Demo_3", "1984", "George Orwell", "War is peace. Freedom is slavery. Ignorance is strength.", false);
 createBookCard("Demo_3");
 
-createBook("Demo_4", "Pride and Prejudice", "Jane Austen", "Vanity and pride are different things, though the words are often used synonymously.", true);
+createBook("Demo_4", "The Wind in the Willows", "Kenneth Grahame", "", false);
 createBookCard("Demo_4");
 
-createBook("Demo_5", "The Great Gatsby", "F. Scott Fitzgerald", "", false);
+createBook("Demo_5", "Pride and Prejudice", "Jane Austen", "Vanity and pride are different things, though the words are often used synonymously.", true);
 createBookCard("Demo_5");
 
-createBook("Demo_6", "Moby-Dick", "Herman Melville", "Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; whenever I find myself involuntarily pausing before coffin warehouses, and bringing up the rear of every funeral I meet; and especially whenever my hypos get such an upper hand of me, that it requires a strong moral principle to prevent me from deliberately stepping into the street, and methodically knocking people's hats off - then, I account it high time to get to sea as soon as I can" , false);
+createBook("Demo_6", "The Great Gatsby", "F. Scott Fitzgerald", "", true);
 createBookCard("Demo_6");
 
-createBook("Demo_7", "Brave New World", "Aldous Huxley", "But I don't want comfort. I want God, I want poetry, I want real danger, I want freedom, I want goodness. I want sin.", true);
+createBook("Demo_7", "Moby-Dick", "Herman Melville", "Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; whenever I find myself involuntarily pausing before coffin warehouses, and bringing up the rear of every funeral I meet; and especially whenever my hypos get such an upper hand of me, that it requires a strong moral principle to prevent me from deliberately stepping into the street, and methodically knocking people's hats off - then, I account it high time to get to sea as soon as I can" , false);
 createBookCard("Demo_7");
 
-createBook("Demo_8", "The Catcher in the Rye", "J.D. Salinger", "I am always saying 'Glad to've met you' to somebody I'm not at all glad I met.", false);
+createBook("Demo_8", "Brave New World", "Aldous Huxley", "But I don't want comfort. I want God, I want poetry, I want real danger, I want freedom, I want goodness. I want sin.", true);
 createBookCard("Demo_8");
 
-createBook("Demo_9", "Crime and Punishment", "Fyodor Dostoevsky", "Pain and suffering are always inevitable for a large intelligence and a deep heart.", true);
+createBook("Demo_9", "The Catcher in the Rye", "J.D. Salinger", "I am always saying 'Glad to've met you' to somebody I'm not at all glad I met.", false);
 createBookCard("Demo_9");
 
-createBook("Demo_10", "Wuthering Heights", "Emily Brontë", "", false);
+createBook("Demo_10", "Crime and Punishment", "Fyodor Dostoevsky", "Pain and suffering are always inevitable for a large intelligence and a deep heart.", true);
 createBookCard("Demo_10");
+
+createBook("Demo_11", "Wuthering Heights", "Emily Brontë", "", false);
+createBookCard("Demo_11");
 
 
 
