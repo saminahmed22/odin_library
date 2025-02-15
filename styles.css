@@ -93,6 +93,7 @@ header{
     width: 275px;
     font-family: sans-serif;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    z-index: 3;
 }
 .addBookModalTopbar{
     display: flex;
@@ -253,12 +254,14 @@ header{
     width: 250px;
     color: white;
     background-color: var(--header_footer_BGcolor);
-    border: none;
+    border: 2px solid rgba(0, 0, 0, 0.568);
     border-radius: 10px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 250px;
     overflow: hidden;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    z-index: 3;
 }
 .deleteConfirmDiv h2{
     font-family: sans-serif;
@@ -302,6 +305,7 @@ header{
     width: 275px;
     font-family: sans-serif;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    z-index: 3;
 }
 .editBookModalTopbar{
     display: flex;
