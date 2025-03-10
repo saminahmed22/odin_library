@@ -23,7 +23,7 @@ cancelSubmission.addEventListener("click", () => {
 
 function changeColorCode(getBookID){
 
-    const getBookObj = bookCollection[getBookID]
+    const getBookObj = bookCollection[getBookID];
 
     let borderColor;
     let titleColor;
@@ -50,22 +50,38 @@ function changeColorCode(getBookID){
     document.querySelector(`.${getBookID}_Author`).style.color = authorColor;
 }
 
-// Creates Book and adds it to the collection Object
-function createBook(bookID, name, author, quote, finishStatus){
+// **************************************************************************************
+// refactoring to class
 
-    function Book(bookID, name, author, quote, finishStatus){
+class Book{
+    constructor(bookID, name, author, quote, finishStatus){
         this.bookID = bookID;
         this.name = name;
         this.author = author;
         this.quote = quote;
         this.finishStatus = finishStatus;
     }
+}
+
+
+
+// **************************************************************************************
+
+// Creates Book and adds it to the collection Object
+function createBook(bookID, name, author, quote, finishStatus){
+
+    class Book{
+        constructor(bookID, name, author, quote, finishStatus){
+            this.bookID = bookID;
+            this.name = name;
+            this.author = author;
+            this.quote = quote;
+            this.finishStatus = finishStatus;
+        }
+    }
 
     const book = new Book(bookID, name, author, quote, finishStatus);
     bookCollection[bookID] = book;
-
-    console.log(`bookID in create Book" Func = ${bookID}`)
-    console.log("Book Object in create Book Func = " + JSON.stringify(book, null, 2));
 }
 
 // Creates Book Card
@@ -182,10 +198,51 @@ createBookCard("Demo_11");
 
 // ************************************************************************************************************************************
 
+let addDetailsCount = 1;
+const addDetailsBtn = document.querySelector(".addDetailsBtn")
+addDetailsBtn.addEventListener("click", () => {
 
+    // const CreateUniqueID = `${Math.floor(Math.random() * 1000000)}`;
+
+    // console.log(addDetailsCount)
+
+    const addDetailDiv = document.querySelector(".addtionalDetailsDiv");
+    const addBookform = document.querySelector(".addBookModal");
+
+    const insrtBeforeDiv =  document.querySelector(".addDetailsOption")
+
+
+
+    if(addDetailsCount === 1){
+        addDetailDiv.style.display = "block";
+        addBookform.style.height = "535px";
+        // const addDetailtitle = addDetailDiv.querySelector(".additonalDetailsTitle")
+        // const addDetaildesc = addDetailDiv.querySelector(".additonalDetailsDesc")
+        // addDetailtitle.classList.add(`extraInfoTitle_${CreateUniqueID}`)
+        // addDetaildesc.classList.add(`extraInfoDesc_${CreateUniqueID}`)
+        addDetailsCount++;
+
+        // console.log(`Clone title class = {extraInfoTitle_${CreateUniqueID}}`)
+        // console.log(`Clone title Desc = {extraInfoDesc_${CreateUniqueID}}`)
+    }
+    else{
+        const clone = addDetailDiv.cloneNode(true);
+        const addDetailtitle = clone.querySelector(".additonalDetailsTitle")
+        addDetailtitle.value = '';
+        const addDetaildesc = clone.querySelector(".additonalDetailsDesc")
+        addDetaildesc.value = '';
+        // addDetailtitle.classList.add(`extraInfoTitle_${CreateUniqueID}`)
+        // addDetaildesc.classList.add(`extraInfoDesc_${CreateUniqueID}`)
+        insrtBeforeDiv.parentElement.insertBefore(clone, insrtBeforeDiv);
+        addDetailsCount++;
+
+        // console.log(`Clone title class = {extraInfoTitle_${CreateUniqueID}}`)
+        // console.log(`Clone title Desc = {extraInfoDesc_${CreateUniqueID}}`)
+    }
+})
 
 // Add new book form submission
-addBookform.addEventListener("submit", () => {
+addBookform.addEventListener("submit", (event) => {
     event.preventDefault();
     addbookModal.close();
     overlay.style.display = "none";
@@ -196,10 +253,31 @@ addBookform.addEventListener("submit", () => {
     const quote = document.getElementById("favquote").value;
     const finishStatus = document.getElementById("finishCheck").checked;
 
+    const extraDetails = [];
+
+    // Select all extra detail title and description fields
+    const titles = document.querySelectorAll(".additonalDetailsTitle");
+    const descriptions = document.querySelectorAll(".additonalDetailsDesc");
+
+    // Loop through the fields and push the values to the extraDetails array
+    titles.forEach((title, index) => {
+        const description = descriptions[index];
+        extraDetails.push({
+            title: title.value,
+            description: description.value
+        });
+    });
+
     createBook(CreateUniqueID, name, author, quote, finishStatus);
     createBookCard(CreateUniqueID);
 
-    console.log()
+    const extraDivs = document.querySelectorAll(".addtionalDetailsDiv");
+    extraDivs.forEach(element => {
+        element.remove();
+    });
+
+    addbookModal.style.height = "365px";
+    console.log(extraDetails)
     addBookform.reset();
 })
 
