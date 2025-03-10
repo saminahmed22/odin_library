@@ -89,10 +89,14 @@ header{
     border-radius: 10px;
     color: white;
     background-color: var(--header_footer_BGcolor);
-    height: 340px;
+    /* height: 575px; */
+    height: 365px;
     width: 275px;
     font-family: sans-serif;
     z-index: 3;
+    overflow: auto;
+    overflow-x: hidden;
+    padding-bottom: 10px;
 }
 .addBookModalTopbar{
     display: flex;
@@ -101,18 +105,18 @@ header{
 .addBookModalTitle{
     margin: 2px 0 30px 0px;
 }
-.cancelSubmission{
+.cancelButtons{
     height: 20px;
     width: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(255, 0, 0, 0);
 }
-.cancelSubmission:hover{
+.cancelButtons:hover{
     background-color: rgb(255, 56, 56);
 }
-.cancelSubmission:active{
+.cancelButtons:active{
     background-color: crimson;
 }
 .addNewBookModalForm{
@@ -138,9 +142,61 @@ header{
     resize: none;
 }
 
+
+
+/* **************** */
+.addtionalDetailsDiv{
+    display: none;
+    border-top: 1px dotted white;
+    width: 255px;
+    padding-top: 10px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+.addDetailsOption{
+    margin-top: 5px;
+    height: 35px;
+    width: 255px;
+    display: flex;
+    gap: 10px;
+}
+
+.addDetailsBtn{
+    height: 20px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.addDetailsOption p{
+    margin: 3px;
+}
+
+#additonalDetailsDesc{
+    height: 60px;
+    resize: none;
+}
+.canceldetailsBtn{
+    height: 20px;
+    width: 255px
+}
+.cancelAdditionalDetails{
+    position: absolute;
+    right: 30px;
+
+}
+/* ****************************************** */
+
 #finishCheck{
     margin-left: 0;
     cursor: pointer;
+}
+.submitBtn{
+    height: 30px;
+    width: 255px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .submitNewBook{
@@ -148,9 +204,7 @@ header{
     width: 65px;
     border: none;
     border-radius: 5px;
-    position: absolute;
-    left: 215px;
-    bottom: 20px;
+
 }
 
 .submitNewBook:active{

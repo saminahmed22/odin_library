@@ -22,8 +22,8 @@
             <dialog class="addBookModal">
                 <div class="addBookModalTopbar">
                     <h3 class="addBookModalTitle">Add a new book</h3>
-                    <button class="cancelSubmission"><img draggable="false" src="icons/close.svg" alt="Close"
-                            class="close"></button>
+                    <button class="cancelSubmission cancelButtons"><img draggable="false" src="icons/close.svg"
+                            alt="Close" class="close"></button>
                 </div>
 
                 <form action="" method="post" class="addNewBookModalForm" id="addNewBookModalForm">
@@ -40,9 +40,50 @@
                         placeholder="When we love, we always strive to become better than we are."></textarea><br>
 
                     <input type="checkbox" name="finishCheck" id="finishCheck">
-                    <label for="finishCheck">Finished reading it?</label>
+                    <label for="finishCheck">Finished reading it?</label><br>
 
-                    <div class="addbookmodalActionbtns">
+                    <!-- In JS add a counter for the addional details to use as class or ID if needed -->
+                    <div class="addtionalDetailsDiv">
+                        <div class="canceldetailsBtn">
+                            <button class="cancelAdditionalDetails cancelButtons"><img draggable="false"
+                                    src="icons/close.svg" alt="Close"></button>
+                        </div>
+
+                        <label for="additonalDetailsTitle">Title:</label><br>
+                        <input class="addBookModalInputs additonalDetailsTitle" name="additonalDetailsTitle"
+                            id="additonalDetailsTitle_1" type="text"><br><br>
+
+                        <label for="addtionlDetails">Description:</label><br>
+                        <textarea class="addBookModalInputs additonalDetailsDesc" name="additonalDetailsDesc"
+                            id="additonalDetailsDesc_1"></textarea><br>
+
+                    </div>
+                    <!--  -->
+
+                    <!-- <div class="addtionalDetailsDiv">
+                        <div class="canceldetailsBtn">
+                            <button class="cancelAdditionalDetails cancelButtons"><img draggable="false"
+                                    src="icons/close.svg" alt="Close"></button>
+                        </div>
+
+                        <label for="additonalDetailsTitle">Title:</label><br>
+                        <input class="addBookModalInputs" id="additonalDetailsTitle" type="text"><br><br>
+
+                        <label for="addtionlDetails">Details:</label><br>
+                        <textarea class="addBookModalInputs" name="addtionlDetails" id="addtionlDetails"></textarea><br>
+
+                    </div> -->
+                    <!--  -->
+
+                    <div class="addDetailsOption">
+                        <button type="button" class="addDetailsBtn"><img draggable="false" src="icons/add.svg"
+                                alt="Add icon"></button>
+                        <p>Add addtional details</p>
+                    </div>
+
+
+
+                    <div class="submitBtn">
                         <button class="submitNewBook" type="submit">Submit</button>
                     </div>
                 </form>
